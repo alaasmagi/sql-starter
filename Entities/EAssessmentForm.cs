@@ -2,8 +2,8 @@ namespace Entities;
 
 public enum EAssessmentForm
 {
-    Exam,
-    Test,
-    Task,
-    Practice,
+    Exam,   // 0
+    Test,   // 1
+    Task,   // 2
+    Practice,   // 3
 }

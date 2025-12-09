@@ -2,6 +2,6 @@
 
 public enum ELanguage
 {
-    Estonian,
-    English,
+    Estonian,   // 0
+    English,    // 1
 }

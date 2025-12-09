@@ -2,7 +2,7 @@ namespace Entities;
 
 public enum EStudyLevel
 {
-    Bachelors,
-    Masters,
-    Doctors
+    Bachelors,  // 0
+    Masters,    // 1
+    Doctors     // 2
 }
