@@ -1,0 +1,22 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Entities;
+public class Curriculum : BaseEntity
+{
+    public string Code { get; set; } = string.Empty;
+    public EStudyLevel StudyLevel { get; set; }
+    public string EtName { get; set; } = string.Empty;
+    public string EnName { get; set; } = string.Empty;
+    public string ManagerName { get; set; } = string.Empty;
+    public ELanguage Language { get; set; } = ELanguage.Estonian;
+    public int EapVolume { get; set; }
+
+
+    [NotMapped]
+    public string StudyLevelText
+        => Helpers.GetStudyLevelAsText(StudyLevel);
+
+    [NotMapped]
+    public string LanguageText
+        => Helpers.GetLanguageAsText(Language);
+}
