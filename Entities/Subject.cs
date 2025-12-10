@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entities;
+namespace Domain;
 public class Subject : BaseEntity
 {
     public string Code { get; set; } = string.Empty;

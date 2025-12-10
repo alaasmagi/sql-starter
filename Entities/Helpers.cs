@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Entities;
+namespace Domain;
 
 public class Helpers
 {
