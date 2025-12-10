@@ -4,7 +4,7 @@ namespace Domain;
 public class Curriculum : BaseEntity
 {
     public string Code { get; set; } = string.Empty;
-    public EStudyLevel StudyLevel { get; set; }
+    public EStudyLevel StudyLevel { get; set; } = EStudyLevel.Bachelors;
     public string EtName { get; set; } = string.Empty;
     public string EnName { get; set; } = string.Empty;
     public string ManagerName { get; set; } = string.Empty;
