@@ -19,7 +19,7 @@ public interface IRepository
     // UPDATE methods
     bool UpdateCurriculum(Guid curriculumId, Curriculum curriculum);
     bool UpdateSubject(Guid subjectId, Subject subject);
-    bool AddSubjectToCurriculum(Guid curriculumId, Guid subjectId);
+    bool AddSubjectToCurriculum(CurriculumSubject curriculumSubject);
     bool RemoveSubjectFromCurriculum(Guid curriculumId, Guid subjectId);
     
     // DELETE methods
