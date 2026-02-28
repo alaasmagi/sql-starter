@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Microsoft.Extensions.DependencyInjection;
+using Repository;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
@@ -20,10 +21,11 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        // private IRepository repository;
+        private IRepository repository;
         public MainWindow()
         {
-            // repository = App.Services.GetRequiredService<IRepository>();
+            // TODO: Inject repository through constructor once DI is set up
+            // repository = ...;
             InitializeComponent();
             LoadInitialData();
         }
@@ -45,12 +47,14 @@ namespace GUI
                                .Select(a => new KeyValuePair<EAssessmentForm, string>(a, Helpers.GetAssessmentFormAsText(a)))
                                .ToList(),
 
-                // Curriculums = repository.GetAllCurriculums(),
+                // TODO: Use GetAllCurriculums() to populate Curriculums
+                // Curriculums = ...;
                 CurrentCurriculum = null,
                 CurrentCurriculumSubjects = null,
                 CurrentCurriculumAvailableSubjects = null,
 
-                // Subjects = repository.GetAllSubjects(),
+                // TODO: Use GetAllSubjects() to populate Subjects
+                // Subjects = ...;
                 CurrentSubject = null,
                 CurrentSubjectCurriculums = null,
                 CurrentSubjectAvailableCurriculums = null
@@ -104,17 +108,18 @@ namespace GUI
 
             vm.CurrentCurriculum = selected;
 
-            /*vm.CurrentCurriculumSubjects =
-                new ObservableCollection<Subject>(
-                    repository.GetSubjectsByCurriculum(selected.Id)
-                );
 
+            // TODO: Use GetSubjectsByCurriculum() to populate CurrentCurriculumSubjects and then uncomment the code block below
+            /*
+            vm.CurrentCurriculumSubjects =
+                new ObservableCollection<Subject>(...);
+            */
+
+            // TODO: Use GetAllSubjects() to populate CurrentCurriculumAvailableSubjects, use LINQ to filter out subjects already in CurrentCurriculumSubjects, and then uncomment the code block below
+            /*
             vm.CurrentCurriculumAvailableSubjects =
-                new ObservableCollection<Subject>(
-                    repository.GetAllSubjects()
-                              .Where(s => !vm.CurrentCurriculumSubjects.Any(cs => cs.Id == s.Id))
-                );*/
-
+                new ObservableCollection<Subject>(...);
+            */
             pnlEditCurriculumView.DataContext = vm;
 
             HideAllPanels();
@@ -133,16 +138,17 @@ namespace GUI
 
             vm.CurrentSubject = selected;
 
-            /* vm.CurrentSubjectCurriculums =
-                new ObservableCollection<Curriculum>(
-                    repository.GetCurriculumsBySubject(selected.Id)
-                );
+            // TODO: Use GetCurriculumsBySubject() to populate CurrentSubjectCurriculums and then uncomment the code block below
+            /* 
+            vm.CurrentSubjectCurriculums =
+                new ObservableCollection<Curriculum>(...);
+            */
 
+            // TODO: Use GetAllCurriculums() to populate CurrentSubjectAvailableCurriculums, use LINQ to filter out subjects already in CurrentSubjectCurriculums, and then uncomment the code block below
+            /*
             vm.CurrentSubjectAvailableCurriculums =
-                new ObservableCollection<Curriculum>(
-                    repository.GetAllCurriculums()
-                              .Where(c => !vm.CurrentSubjectCurriculums.Any(sc => sc.Id == c.Id))
-                ); */
+                new ObservableCollection<Curriculum>(...); 
+            */
 
             pnlEditSubjectView.DataContext = vm;
 
@@ -157,13 +163,16 @@ namespace GUI
 
             var newCurriculum = vm.CurrentCurriculum;
 
-            /* var status = repository.CreateCurriculum(newCurriculum);
 
+            // TODO: Use CreateCurriculum() to add the new curriculum and then uncomment the code block below
+            /* 
+            var status = ...;
             if (status == false)
             {
                 MessageBox.Show("Õppekava lisamine ebaõnnestus. Kontrolli õppekava koodi unikaalsust ja õppekava mahtu!", "Tõrge", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            } */
+            } 
+            */
 
             LoadInitialData();
             HideAllPanels();
@@ -177,13 +186,15 @@ namespace GUI
 
             var curriculumToEdit = vm.CurrentCurriculum;
 
-            /* var status = repository.UpdateCurriculum(curriculumToEdit.Id, curriculumToEdit);
-            
+            // TODO: Use UpdateCurriculum() to update the curriculum and then uncomment the code block below
+            /* 
+            var status = ...;
             if (status == false)
             {
                 MessageBox.Show("Õppekava muutmine ebaõnnestus. Kontrolli õppekava koodi unikaalsust ja õppekava mahtu!", "Tõrge", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            } */
+            } 
+            */
 
             LoadInitialData();
             HideAllPanels();
@@ -197,7 +208,7 @@ namespace GUI
 
             var curriculumToDelete = vm.CurrentCurriculum;
 
-            // repository.DeleteCurriculum(curriculumToDelete.Id);
+            // TODO: Use DeleteCurriculum() to delete the curriculum
 
             LoadInitialData();
             HideAllPanels();
@@ -211,13 +222,16 @@ namespace GUI
 
             var newSubject = vm.CurrentSubject;
 
-            /* var status = repository.CreateSubject(newSubject);
 
+            // TODO: Use CreateSubject() to add the new subject and then uncomment the code block below
+            /* 
+            var status = ...;
             if (status == false)
             {
                 MessageBox.Show("Õppeaine lisamine ebaõnnestus. Kontrolli Õppeaine koodi unikaalsust ja Õppeaine mahtu!", "Tõrge", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            } */
+            }
+            */
 
             LoadInitialData();
             HideAllPanels();
@@ -231,13 +245,15 @@ namespace GUI
 
             var subjectToEdit = vm.CurrentSubject;
 
-            /* var status = repository.UpdateSubject(subjectToEdit.Id, subjectToEdit);
-
+            // TODO: Use UpdateSubject() to update the subject and then uncomment the code block below
+            /* 
+            var status = ...;
             if (status == false)
             {
                 MessageBox.Show("Õppeaine muutmine ebaõnnestus. Kontrolli Õppeaine koodi unikaalsust ja Õppeaine mahtu!", "Tõrge", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            } */
+            } 
+            */
 
             LoadInitialData();
             HideAllPanels();
@@ -250,7 +266,7 @@ namespace GUI
 
             var subjectToDelete = vm.CurrentSubject;
 
-            // repository.DeleteSubject(subjectToDelete.Id);
+            // TODO: Use DeleteSubject() to delete the subject
 
             LoadInitialData();
             HideAllPanels();
@@ -277,18 +293,20 @@ namespace GUI
                 SubjectId = subjectToAdd.Id
             };
 
-            /* repository.AddSubjectToCurriculum(curriculumSubject);
+            // TODO: Use AddSubjectToCurriculum() to add the subject to the curriculum
 
+            // TODO: Use GetSubjectsByCurriculum() to update CurrentCurriculumSubjects and then uncomment the code block below
+            /*
             vm.CurrentCurriculumSubjects =
-               new ObservableCollection<Subject>(
-                   repository.GetSubjectsByCurriculum(currentCurriculum.Id)
-               );
+               new ObservableCollection<Subject>(...);
+            */
 
+            // TODO: Use GetAllSubjects() to update CurrentCurriculumAvailableSubjects, use LINQ to filter out subjects already in CurrentCurriculumSubjects, and then uncomment the code block below
+            /*
             vm.CurrentCurriculumAvailableSubjects =
-                new ObservableCollection<Subject>(
-                    repository.GetAllSubjects()
-                              .Where(s => !vm.CurrentCurriculumSubjects.Any(cs => cs.Id == s.Id))
-                ); */
+                new ObservableCollection<Subject>(...)
+                );
+            */
 
             pnlEditCurriculumView.DataContext = vm;
         }
@@ -307,18 +325,20 @@ namespace GUI
                 return;
             }
 
-            /* repository.RemoveSubjectFromCurriculum(currentCurriculum.Id, subjectToRemove.Id);
+            // TODO: Use RemoveSubjectFromCurriculum() to remove the subject  the curriculum
 
+
+            // TODO: Use GetSubjectsByCurriculum() to update CurrentCurriculumSubjects and then uncomment the code block below
+            /*
             vm.CurrentCurriculumSubjects =
-               new ObservableCollection<Subject>(
-                   repository.GetSubjectsByCurriculum(currentCurriculum.Id)
-               );
+               new ObservableCollection<Subject>(...);
+            */
 
+            // TODO: Use GetAllSubjects() to update CurrentCurriculumAvailableSubjects, use LINQ to filter out subjects already in CurrentCurriculumSubjects, and then uncomment the code block below
+            /*
             vm.CurrentCurriculumAvailableSubjects =
-                new ObservableCollection<Subject>(
-                    repository.GetAllSubjects()
-                              .Where(s => !vm.CurrentCurriculumSubjects.Any(cs => cs.Id == s.Id))
-                ); */
+                new ObservableCollection<Subject>(...); 
+            */
 
             pnlEditCurriculumView.DataContext = vm;
         }

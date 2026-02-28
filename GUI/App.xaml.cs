@@ -16,19 +16,14 @@ namespace GUI
         {
             var services = new ServiceCollection();
 
+            // These variables are used to construct the database path
             var directory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var dbPath = Path.Combine(directory, "uni.db");
 
-            // EF setup
-            /*services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite($"Data Source={dbPath}"));*/
+            // TODO: Set up Dependency Injection for the SQL repository
 
-            // Uncomment this to use EF
-            /*services.AddScoped<IRepository, EfRepository>();*/
-
-            // Uncomment this to use raw SQL
-            /*services.AddScoped<IRepository, SqlRepository>(sp =>
-                new SqlRepository($"Data Source={dbPath}"));*/
+            // TODO: NB! For the bonus task only! Set up EFCore repository for the AppDbContext
+            // TODO: NB! For the bonus task only! Set up Dependency Injection for the EF Core repository
 
             Services = services.BuildServiceProvider();
 
