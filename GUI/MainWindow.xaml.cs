@@ -259,6 +259,7 @@ namespace GUI
             HideAllPanels();
             pnlInitialView.Visibility = Visibility.Visible;
         }
+
         private void btnDeleteSubject_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as ViewModel;
@@ -326,7 +327,6 @@ namespace GUI
             }
 
             // TODO: Use RemoveSubjectFromCurriculum() to remove the subject  the curriculum
-
 
             // TODO: Use GetSubjectsByCurriculum() to update CurrentCurriculumSubjects and then uncomment the code block below
             /*
