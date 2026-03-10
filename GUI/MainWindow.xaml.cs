@@ -48,13 +48,13 @@ namespace GUI
                                .ToList(),
 
                 // TODO: Use GetAllCurriculums() to populate Curriculums
-                // Curriculums = ...;
+                // Curriculums = ...,
                 CurrentCurriculum = null,
                 CurrentCurriculumSubjects = null,
                 CurrentCurriculumAvailableSubjects = null,
 
                 // TODO: Use GetAllSubjects() to populate Subjects
-                // Subjects = ...;
+                // Subjects = ...,
                 CurrentSubject = null,
                 CurrentSubjectCurriculums = null,
                 CurrentSubjectAvailableCurriculums = null
